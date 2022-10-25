@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FaSignOutAlt, FaSignInAlt, FaTasks } from 'react-icons/fa';
+
 import { AuthContext } from '../Contexts/UserContext';
 
 const Navbar = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { user, logout, details } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logout()
@@ -17,35 +19,31 @@ const Navbar = () => {
     return (
         <div className="navbar bg-base-100 shadow-lg">
             <div className="flex-1">
-                {/* <div className="w-10 rounded-full">
-                    <img src="../../assests/logo.jpg" />
-                </div> */}
+                <div className="rounded-full">
+                    <FaTasks />
+                </div>
                 <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold">Thryvi</Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/courses'>Courses</Link></li>
-                    <li><Link to=''>FAQ</Link></li>
-                    <li><Link to=''>Blog</Link></li>
+                    <li><Link to='/faq'>FAQ</Link></li>
+                    <li><Link to='/blogs'>Blog</Link></li>
                     {user?.email ? <>
                         <li><Link to=''>Profile</Link></li>
                         <li>
-                            <button onClick={handleLogOut} className='inline-flex items-center py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0'> Logout</button>
+                            <button onClick={handleLogOut} className='inline-flex items-center py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0'> <><FaSignOutAlt />Log Out</></button>
                         </li>
                     </>
                         :
                         <>
-                            <li><Link to='/login'>Login</Link></li>
-                            <li><Link to='/register'>Sign up</Link></li>
+                            <li><Link to='/login'><FaSignInAlt />Login</Link></li>
+                            <li><Link to='/register'><FaSignInAlt />Sign Up</Link></li>
                         </>
                     }
                     <li>
                         <div className="form-control">
-                            {/* <label className="label cursor-pointer">
-                                <span>Dark Mode</span>
-                                <input type="checkbox" className="toggle ml-2" />
-                            </label> */}
                             <label className="swap swap-rotate">
 
                                 <input type="checkbox" />

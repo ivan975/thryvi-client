@@ -6,7 +6,7 @@ const Details = () => {
     console.log(details);
     return (
         <div className=''>
-            <div className="flex justify-center mt-16 mb-9">
+            <div className="flex justify-center mt-36 ">
                 <div className="card card-side bg-base-100 shadow-xl">
                     <figure><img src={details.image} alt="country" /></figure>
                     <div className="card-body">
