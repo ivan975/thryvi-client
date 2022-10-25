@@ -9,13 +9,13 @@ const Navbar = () => {
     const handleLogOut = () => {
         logout()
             .then(res => {
-                toast.error('Logged out')
+                toast.warning('Logged out')
             })
             .catch(error => console.error(error))
     }
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 shadow-lg">
             <div className="flex-1">
                 {/* <div className="w-10 rounded-full">
                     <img src="../../assests/logo.jpg" />
@@ -25,7 +25,7 @@ const Navbar = () => {
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to=''>Courses</Link></li>
+                    <li><Link to='/courses'>Courses</Link></li>
                     <li><Link to=''>FAQ</Link></li>
                     <li><Link to=''>Blog</Link></li>
                     {user?.email ? <>
