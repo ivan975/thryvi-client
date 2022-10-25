@@ -10,7 +10,7 @@ const Profile = () => {
                 <img src={user?.photoURL ? user.photoURL : avatar} alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />
                 <div className="space-y-4 text-center divide-y divide-gray-700">
                     <div className="my-2 space-y-1">
-                        <h2 className="text-xl font-semibold sm:text-2xl text-start">Name:{user?.displayName ? user.displayName : 'Name Not Available'} </h2>
+                        <h2 className="text-xl font-semibold sm:text-xl text-start">Name:{user?.displayName ? user.displayName : 'Null'} </h2>
                         <span className='text-gray-700'>Email:{user?.email}</span>
                         <span className='flex items-center space-x-2 w-full'>
                             <span className='text-gray-700 text-small'>
