@@ -82,7 +82,7 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                            <div className='flex justify-center space-x-4'>
+                            <div className='flex justify-center'>
                                 <button onClick={handleGoogleSignIn} aria-label='Log in with Google' className='p-3 rounded-sm'>
                                     <svg
                                         xmlns='http://www.w3.org/2000/svg'
