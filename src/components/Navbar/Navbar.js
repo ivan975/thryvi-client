@@ -16,6 +16,9 @@ const Navbar = () => {
                     <li><Link to=''>Courses</Link></li>
                     <li><Link to=''>FAQ</Link></li>
                     <li><Link to=''>Blog</Link></li>
+                    <li><Link to=''>Profile</Link></li>
+                    <li><Link to='/login'>Login</Link></li>
+                    <li><Link to='/register'>Sign up</Link></li>
                     <li>
                         <div className="form-control">
                             <label className="label cursor-pointer">
