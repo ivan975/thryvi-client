@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../Contexts/UserContext';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logout()
+            .then(res => {
+                toast.error('Logged out')
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
@@ -16,9 +28,18 @@ const Navbar = () => {
                     <li><Link to=''>Courses</Link></li>
                     <li><Link to=''>FAQ</Link></li>
                     <li><Link to=''>Blog</Link></li>
-                    <li><Link to=''>Profile</Link></li>
-                    <li><Link to='/login'>Login</Link></li>
-                    <li><Link to='/register'>Sign up</Link></li>
+                    {user?.email ? <>
+                        <li><Link to=''>Profile</Link></li>
+                        <li>
+                            <button onClick={handleLogOut} className='inline-flex items-center py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0'> Logout</button>
+                        </li>
+                    </>
+                        :
+                        <>
+                            <li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/register'>Sign up</Link></li>
+                        </>
+                    }
                     <li>
                         <div className="form-control">
                             <label className="label cursor-pointer">
@@ -29,7 +50,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
-        </div>
+        </div >
     );
 };
 
