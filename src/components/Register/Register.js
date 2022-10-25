@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/UserContext';
 
 const Register = () => {
-    const { createUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { createUser, googleSignIn, githubSignIn, updateUserProfile } = useContext(AuthContext);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -19,7 +19,20 @@ const Register = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                form.reset();
+                handleUpdateUserInformation(name, photoURL);
             })
+            .catch(error => console.error(error))
+    }
+
+    const handleUpdateUserInformation = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        // console.log();
+        updateUserProfile(profile)
+            .then(() => { })
             .catch(error => console.error(error))
     }
 
