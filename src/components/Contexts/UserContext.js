@@ -8,7 +8,7 @@ const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const UserContext = ({ children }) => {
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(true);
 
     const createUser = (email, password) => {
@@ -55,7 +55,7 @@ const UserContext = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setLoader(true);
+            setLoader(false);
         })
         return () => unsubscribe();
     })

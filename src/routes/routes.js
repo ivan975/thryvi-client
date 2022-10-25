@@ -5,6 +5,7 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import FAQ from "../components/FAQ/FAQ";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
+import Premium from "../components/Premium/Premium";
 import Profile from "../components/Profile/Profile";
 import Register from "../components/Register/Register";
 import Main from "../layout/Main";
@@ -47,7 +48,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <PrivateRoute><Profile /></PrivateRoute>
+                element: <PrivateRoute><Profile />3</PrivateRoute>
+            },
+            {
+                path: '/premium/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`),
+                element: <PrivateRoute><Premium /></PrivateRoute>
             }
         ]
     }

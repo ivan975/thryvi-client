@@ -33,9 +33,9 @@ const Login = () => {
         googleSignIn()
             .then(res => {
                 toast.success('Login Successful')
-                navigate(from, { replace: true })
                 const user = res.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
@@ -44,9 +44,9 @@ const Login = () => {
         githubSignIn()
             .then(res => {
                 toast.success('Login Successful')
-                navigate(from, { replace: true })
                 const user = res.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }

@@ -1,9 +1,11 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Details = () => {
     const details = useLoaderData();
     console.log(details);
+
     return (
         <div className=''>
             <div className="flex justify-center mt-36 ">
@@ -13,7 +15,7 @@ const Details = () => {
                         <h2 className="card-title text-2xl font-bold">{details.title}</h2>
                         <p className='text-start'>{details.description}</p>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary mr-5">Get Visa</button>
+                            <Link to={`../premium/${details.id}`} className="btn btn-primary font-bold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">Get premium access</Link>
                         </div>
                     </div>
                 </div>

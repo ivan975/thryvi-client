@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const CourseDetails = ({ course }) => {
     const { id, title, image, description } = course;
@@ -11,12 +10,11 @@ const CourseDetails = ({ course }) => {
                     <div className="card-body">
                         <h2 className="card-title">
                             {title}
-                            {/* <div className="badge badge-secondary">NEW</div> */}
                         </h2>
                         <p className='text-start'>{description}</p>
-                        <div className="card-actions justify-end">
+                        <div className="card-actions justify-between">
                             <button className="btn btn-secondary">Show Details</button>
-                            <button className="btn btn-secondary">Get premium access</button>
+                            <button className="btn btn-secondary">Get Premium</button>
                         </div>
                     </div>
                 </div>
