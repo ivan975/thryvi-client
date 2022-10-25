@@ -1,3 +1,33 @@
+# Website Name : Thryvi
+Library used : Tailwind css, react js,express js
+
+Features:
+* Login,Registration
+* Can buy courses
+* Can browse courses
+* Will have profile 
+* without login cannot visit profile and cannot buy course
+* There are FAQs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
