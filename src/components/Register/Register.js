@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/UserContext';
 
 const Register = () => {
-    const { createUser, googleSignIn, githubSignIn, updateUserProfile } = useContext(AuthContext);
+    const { createUser, googleSignIn, githubSignIn, updateUserProfile, emailVerify } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState({
@@ -75,7 +75,12 @@ const Register = () => {
         updateUserProfile(profile)
             .then(() => { })
             .catch(error => console.error(error))
+        emailVerify()
+            .then(() => {
+                toast.success('Please check your email for verification');
+            });
     }
+
 
     const handleGoogleSignIn = () => {
         googleSignIn()
@@ -155,7 +160,6 @@ const Register = () => {
                                 <Link to='/login' className='hover:underline text-gray-600'>
                                     Login
                                 </Link>
-                                .
                             </p>
                         </div>
                         <div className="form-control mt-6">
