@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/UserContext';
 
 const Register = () => {
     const { createUser, googleSignIn, githubSignIn, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    // const location = useLocation();
+    // const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -22,6 +25,7 @@ const Register = () => {
                 console.log(user);
                 form.reset();
                 handleUpdateUserInformation(name, photoURL);
+                navigate('/login')
             })
             .catch(error => console.error(error))
     }

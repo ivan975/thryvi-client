@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/UserContext';
 
 const Login = () => {
-    const { googleSignIn, githubSignIn, login } = useContext(AuthContext);
+    const [userEmail, setUserEmail] = useState('');
+    const { googleSignIn, githubSignIn, login, resetPassword } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -51,6 +52,12 @@ const Login = () => {
             .catch(error => console.error(error))
     }
 
+    const handleResetPassword = () => {
+        resetPassword(userEmail)
+            .then(res => toast.success('Reset link has been sent to your email...'))
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col mb-52">
@@ -63,7 +70,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                            <input onBlur={e => setUserEmail(e.target.value)} type="email" name="email" placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -92,7 +99,7 @@ const Login = () => {
                                 </button>
                             </div>
                             <label className="label">
-                                <Link to="/" className="label-text-alt link link-hover">Forgot password?</Link>
+                                <Link onClick={handleResetPassword} to="/" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
                             <p className='px-6 text-sm text-center text-gray-400'>
                                 Don't have an account yet?{' '}

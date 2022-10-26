@@ -6,10 +6,10 @@ const Profile = () => {
     const { user } = useContext(AuthContext);
     return (
         <div>
-            <div className="w-52 h-24 bg-base-100 shadow-xl mt-6 mb-40 rounded-lg mx-auto">
-                <figure><img src={user?.photoURL ? user.photoURL : avatar} alt="Shoes" /></figure>
+            <div className="mx-auto mt-28 w-96 bg-base-100 shadow-xl">
+                <figure><img className='w-96 h-60' src={user?.photoURL ? user.photoURL : avatar} alt="" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title text-start">
+                    <h2 className="card-title">
                         Name:{user?.displayName ? user.displayName : 'Null'}
                     </h2>
                     <span className='text-gray-700 text-start'>Email:{user?.email}</span>
