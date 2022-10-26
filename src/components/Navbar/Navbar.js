@@ -34,7 +34,8 @@ const Navbar = () => {
                         <li><Link to='/profile'>Profile</Link></li>
                         <li>
                             <span>{user?.displayName}</span>
-                            {user?.photoURL && <img src={user?.photoURL} className='h-16 rounded-sm' alt=""></img>
+                            {
+                                user?.photoURL && <img src={user?.photoURL} className='h-20 rounded' alt=""></img>
                             }
                             <button onClick={handleLogOut} className='inline-flex items-center py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0'> <><FaSignOutAlt />Log Out</></button>
                         </li>

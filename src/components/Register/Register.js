@@ -6,6 +6,7 @@ import { AuthContext } from '../Contexts/UserContext';
 const Register = () => {
     const { createUser, googleSignIn, githubSignIn, updateUserProfile, emailVerify } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [passwordError, setPasswordError] = useState('');
 
     const [errors, setErrors] = useState({
         email: "",
@@ -33,9 +34,19 @@ const Register = () => {
     const handlePasswordChange = (e) => {
         const password = e.target.value;
         const lengthError = password.length < 6;
+        const noCapitalLetterError = !/[A-Z]{1,}/.test(password);
+        const noSymbolError = !/[\!\@\#\$\%\^\&\*]{1,}/.test(password);
 
         if (lengthError) {
             setErrors({ ...errors, password: "Must be at least 6 characters" });
+            setUserInfo({ ...userInfo, password: "" });
+        }
+        else if (noSymbolError) {
+            setErrors({ ...errors, password: "Must have 1 special character" });
+            setUserInfo({ ...userInfo, password: "" });
+        }
+        else if (noCapitalLetterError) {
+            setErrors({ ...errors, password: "Must have 1 capital letter" });
             setUserInfo({ ...userInfo, password: "" });
         }
         else {
@@ -44,7 +55,6 @@ const Register = () => {
         }
     };
 
-
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
@@ -52,8 +62,6 @@ const Register = () => {
         const email = form.email.value;
         const photoURL = form.photoURL.value;
         const password = form.password.value;
-
-        console.log(name, email, photoURL, password);
 
         createUser(email, password)
             .then(res => {
@@ -64,7 +72,10 @@ const Register = () => {
                 toast.success('Registration successful');
                 navigate('/login')
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setPasswordError(error.message)
+            })
     }
 
     const handleUpdateUserInformation = (name, photoURL) => {
@@ -87,7 +98,10 @@ const Register = () => {
                 const user = res.user;
                 console.log(user);
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setPasswordError(error.message)
+            })
     }
     const handleGithubSignIn = () => {
         githubSignIn()
@@ -95,7 +109,10 @@ const Register = () => {
                 const user = res.user;
                 console.log(user);
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setPasswordError(error.message)
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -109,13 +126,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Full Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="name" className="input input-bordered" required />
+                            <input type="text" name="name" placeholder="name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name="photoURL" placeholder="image" className="input input-bordered" required />
+                            <input type="text" name="photoURL" placeholder="image" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -154,6 +171,7 @@ const Register = () => {
                             <label className="label">
                                 <Link to="/" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
+                            <p className='text-red-600'>{passwordError}</p>
                             <p className='px-6 text-sm text-center text-gray-400'>
                                 Already have an account?{' '}
                                 <Link to='/login' className='hover:underline text-gray-600'>
