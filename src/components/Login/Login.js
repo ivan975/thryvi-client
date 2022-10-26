@@ -161,7 +161,7 @@ const Login = () => {
                                 <Link to='/register' className='hover:underline text-gray-600'>
                                     Sign up
                                 </Link>
-                                .
+                                <div className=""></div>
                             </p>
                         </div>
                         <div className="form-control mt-6">

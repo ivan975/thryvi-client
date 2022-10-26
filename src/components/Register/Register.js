@@ -168,9 +168,6 @@ const Register = () => {
                                     </svg>
                                 </button>
                             </div>
-                            <label className="label">
-                                <Link to="/" className="label-text-alt link link-hover">Forgot password?</Link>
-                            </label>
                             <p className='text-red-600'>{passwordError}</p>
                             <p className='px-6 text-sm text-center text-gray-400'>
                                 Already have an account?{' '}

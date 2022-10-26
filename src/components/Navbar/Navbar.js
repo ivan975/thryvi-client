@@ -7,7 +7,6 @@ import { AuthContext } from '../Contexts/UserContext';
 
 const Navbar = () => {
     const { user, logout, details } = useContext(AuthContext);
-
     const handleLogOut = () => {
         logout()
             .then(res => {
@@ -28,6 +27,9 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/courses'>Courses</Link></li>
+                    {/* {
+                        {}
+                    } */}
                     <li><Link to='/faq'>FAQ</Link></li>
                     <li><Link to='/blogs'>Blog</Link></li>
                     {user?.email ? <>
