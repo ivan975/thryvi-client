@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/UserContext';
@@ -6,8 +6,44 @@ import { AuthContext } from '../Contexts/UserContext';
 const Register = () => {
     const { createUser, googleSignIn, githubSignIn, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
-    // const location = useLocation();
-    // const from = location.state?.from?.pathname || '/';
+
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        general: "",
+    });
+
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        password: "",
+    });
+
+    const handleEmailChange = (e) => {
+        const email = e.target.value;
+
+        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            setErrors({ ...errors, email: "Please provide a valid email" });
+            setUserInfo({ ...userInfo, email: "" });
+        } else {
+            setErrors({ ...errors, email: "" });
+            setUserInfo({ ...userInfo, email: e.target.value });
+        }
+    };
+
+    const handlePasswordChange = (e) => {
+        const password = e.target.value;
+        const lengthError = password.length < 6;
+
+        if (lengthError) {
+            setErrors({ ...errors, password: "Must be at least 6 characters" });
+            setUserInfo({ ...userInfo, password: "" });
+        }
+        else {
+            setErrors({ ...errors, password: "" });
+            setUserInfo({ ...userInfo, password: e.target.value });
+        }
+    };
+
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -25,6 +61,7 @@ const Register = () => {
                 console.log(user);
                 form.reset();
                 handleUpdateUserInformation(name, photoURL);
+                toast.success('Registration successful');
                 navigate('/login')
             })
             .catch(error => console.error(error))
@@ -80,13 +117,15 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                            <input onChange={handleEmailChange} type="email" name="email" placeholder="email" className="input input-bordered" required />
+                            {errors.email && <p className="error-message text-red-600">{errors.email}</p>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            <input onChange={handlePasswordChange} type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            {errors.password && <p className="error-message text-red-600">{errors.password}</p>}
                             <div className='flex justify-center'>
                                 <button onClick={handleGoogleSignIn} aria-label='Log in with Google' className='p-3 rounded-sm'>
                                     <svg

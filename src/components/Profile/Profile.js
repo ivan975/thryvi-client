@@ -6,8 +6,8 @@ const Profile = () => {
     const { user } = useContext(AuthContext);
     return (
         <div>
-            <div className="mx-auto mt-28 w-96 bg-base-100 shadow-xl">
-                <figure><img className='w-96 h-60' src={user?.photoURL ? user.photoURL : avatar} alt="" /></figure>
+            <div className="mx-auto mt-10 w-96 bg-base-100 shadow-xl">
+                <figure><img className='w-96 h-96' src={user?.photoURL ? user.photoURL : avatar} alt="" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
                         Name:{user?.displayName ? user.displayName : 'Null'}
