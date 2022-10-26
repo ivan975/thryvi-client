@@ -81,7 +81,6 @@ const Register = () => {
             });
     }
 
-
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(res => {

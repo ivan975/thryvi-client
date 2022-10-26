@@ -14,7 +14,7 @@ const CourseDetails = ({ course }) => {
                         </h2>
                         <p className='text-start'>{description}</p>
                         <div className="card-actions justify-around">
-                            <button className="btn btn-secondary">Show Details</button>
+                            <Link to={`../details/${course.id}`} className="btn btn-secondary">Show details</Link>
                             <Link to={`../premium/${id}`} className="btn btn-secondary">Get premium access</Link>
                         </div>
                     </div>

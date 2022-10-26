@@ -11,8 +11,9 @@ const Details = () => {
                 <div className="card card-side bg-base-100 shadow-xl">
                     <figure><img src={details.image} alt="" /></figure>
                     <div className="card-body">
-                        <h2 className="card-title text-2xl font-bold">{details.title}</h2>
-                        <p className='text-start'>{details.description}</p>
+                        <h2 className="card-title text-2xl font-bold">ID:{details.id}</h2>
+                        <h2 className="card-title text-2xl font-bold">Course Name:{details.title}</h2>
+                        <p className='text-start'>Details:{details.description}</p>
                         <div className="card-actions justify-end">
                             <Link to={`../premium/${details.id}`}
                                 className="btn btn-secondary">
