@@ -9,12 +9,8 @@ Features:
 * without login cannot visit profile and cannot buy course
 * There are FAQs
 
-
-
-
-
-
-
+Live link:
+https://thryvi-authentication.web.app/
 
 
 
