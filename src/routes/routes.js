@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`),
+                loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-ivan975.vercel.app/details/${params.id}`),
                 element: <Details />
             },
             {
@@ -53,11 +53,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <PrivateRoute><Profile />3</PrivateRoute>
+                element: <PrivateRoute><Profile /></PrivateRoute>
             },
             {
                 path: '/premium/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`),
+                loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-ivan975.vercel.app/premium/${params.id}`),
                 element: <PrivateRoute><Premium /></PrivateRoute>
             }
         ]

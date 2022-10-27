@@ -27,12 +27,9 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/courses'>Courses</Link></li>
-                    {/* {
-                        {}
-                    } */}
                     <li><Link to='/faq'>FAQ</Link></li>
                     <li><Link to='/blogs'>Blog</Link></li>
-                    {user?.email ? <>
+                    {user?.uid ? <>
                         <li><Link to='/profile'>Profile</Link></li>
                         <li>
                             <span>{user?.displayName}</span>

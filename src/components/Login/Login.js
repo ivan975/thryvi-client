@@ -73,10 +73,10 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(res => {
-                toast.success('Login Successful')
                 const user = res.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                toast.success('Login Successful')
             })
             .catch(error => {
                 console.error(error)
@@ -87,10 +87,10 @@ const Login = () => {
     const handleGithubSignIn = () => {
         githubSignIn()
             .then(res => {
-                toast.success('Login Successful')
                 const user = res.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                toast.success('Login Successful')
             })
             .catch(error => {
                 console.error(error)
